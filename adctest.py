@@ -1,3 +1,4 @@
+import sys
 import time
 import board
 import busio
@@ -19,5 +20,8 @@ canal3 = AnalogIn(ads, ADS.P3)
 print("{:>5}\t{:>5}\t{:>5}\t{:>5}".format('A0', 'A1', 'A2', 'A3'))
 
 while True:
+        selection = input("Taper q pour quitter.")
+        if (selection is "q" or selection is "Q"):
+            sys.exit()
         print("{:>5.3f}\t{:>5.3f}\t{:>5.3f}\t{:>5.3f}".format(canal0.voltage,canal1.voltage,canal2.voltage,canal3.voltage))
         time.sleep(0.5)
