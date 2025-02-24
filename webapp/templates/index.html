@@ -3,12 +3,35 @@
       <title>Comment va ma plante verte?</title>
       <link rel="stylesheet" href='../static/style.css'/>
       <link rel="icon" type="image/png" href="../static/assets/{{ image }}">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.min.js"></script>
       <meta http-equiv="refresh" content="30">
    </head>
    <body>
       <img src="../static/assets/{{ image }}" />
       <div class="message">{{ message }}</div>
       <div class="donnees">Humidité: {{ humidite_actuelle }}</div>
+      <canvas id="graphique" width="500px" height="200px"></canvas>
+      <script>
+          var contexte = document.getElementById("graphique").getContext("2d");
+          var graphique = new Chart(contexte,
+          {
+              type: "line",
+              data: {
+                  labels: {{ temps_valeurs | safe }},
+                  datasets: [
+                      {
+                          label: "Humidité",
+                          data: {{ humidite_valeurs | safe }},
+                          fill: false,
+                          lineTension: 0.1
+                      }
+                  ]
+              },
+              options: {
+                  responsive: false
+              }
+          });
+      </script>
       <div class="maj">Dernière mise à jour des données: {{ derniere_maj }} ==> <a href="/"class="button">Rafraîchir</a></div>
    </body>
 </html>
