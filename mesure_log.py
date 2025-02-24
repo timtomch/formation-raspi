@@ -5,9 +5,10 @@ import busio
 import adafruit_ads1x15.ads1015 as ADS
 from adafruit_ads1x15.analog_in import AnalogIn
 import logging
+import os
 
 # Définition du fichier de log
-logging.basicConfig(filename='/home/thomas/humidite.log',level=logging.INFO,format='%(asctime)s\t%(message)s')
+logging.basicConfig(filename=os.path.expanduser('~/humidite.log'),level=logging.INFO,format='%(asctime)s\t%(message)s')
 
 # Intervalle de mesure (en secondes)
 intervalle = 30

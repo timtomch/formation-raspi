@@ -1,5 +1,6 @@
 from flask import Flask, render_template
 from collections import deque
+import os
 
 app = Flask(__name__)
 
@@ -10,8 +11,9 @@ def tail(file_path, n):
         
 # Cette fonction lit les données provenant du fichier de log.
 def lire_donnees():
-	fichier = '/home/thomas/humidite.log'
-	donnees = tail(fichier,100)
+	fichier = '~/humidite.log'
+    # On utilise la fonction os.path.expanduser pour remplacer le '~' par le chemin d'accès complet.
+	donnees = tail(os.path.expanduser(fichier),100)
     # On initialise une série de listes vides qui serviront à contenir les données extraites
 	temps = []
 	humidite = []
