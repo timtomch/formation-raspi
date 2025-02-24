@@ -42,7 +42,9 @@ def index():
 		'derniere_maj': temps[nombre_donnees-1],
 		'humidite_actuelle': humidite[nombre_donnees-1],
 		'message': message_statut,
-		'image': image
+		'image': image,
+        'temps_valeurs': temps,
+        'humidite_valeurs': humidite
 	}
 	return render_template('index.html', **pour_affichage)
 
