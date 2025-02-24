@@ -7,10 +7,10 @@ from adafruit_ads1x15.analog_in import AnalogIn
 # Ouverture du bus I2C sur les pins SCL et SDA par défaut
 i2c = busio.I2C(board.SCL, board.SDA)
 
-# Initiation d'un objet ADC via le bus I2C
+# Initialisation d'un objet ADC via le bus I2C
 ads = ADS.ADS1015(i2c)
 
-# Initiation des canaux
+# Initialisation des canaux
 canal0 = AnalogIn(ads, ADS.P0)
 canal1 = AnalogIn(ads, ADS.P1)
 canal2 = AnalogIn(ads, ADS.P2)

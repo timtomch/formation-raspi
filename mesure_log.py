@@ -7,7 +7,7 @@ from adafruit_ads1x15.analog_in import AnalogIn
 import logging
 
 # Définition du fichier de log
-logging.basicConfig(filename='humidite.log',level=logging.INFO,format='%(asctime)s %(message)s')
+logging.basicConfig(filename='/home/thomas/humidite.log',level=logging.INFO,format='%(asctime)s\t%(message)s')
 
 # Intervalle de mesure (en secondes)
 intervalle = 30
@@ -15,10 +15,10 @@ intervalle = 30
 # Ouverture du bus I2C sur les pins SCL et SDA par défaut
 i2c = busio.I2C(board.SCL, board.SDA)
 
-# Initiation d'un objet ADC via le bus I2C
+# Initialisation d'un objet ADC via le bus I2C
 ads = ADS.ADS1015(i2c)
 
-# Initiation des DELs
+# Initialisation des DELs
 rouge = LED(23)
 verte = LED(24)
 
@@ -49,5 +49,5 @@ while True:
             rouge.off()
             verte.on()
         
-        logging.info("{:>5.4f}\t{:>5}".format(humidite_mesuree,statut_plante))
+        logging.info("{:>5.4f}\t{:}".format(humidite_mesuree,statut_plante))
         time.sleep(intervalle)

@@ -8,10 +8,10 @@ from adafruit_ads1x15.analog_in import AnalogIn
 # Ouverture du bus I2C sur les pins SCL et SDA par défaut
 i2c = busio.I2C(board.SCL, board.SDA)
 
-# Initiation d'un objet ADC via le bus I2C
+# Initialisation d'un objet ADC via le bus I2C
 ads = ADS.ADS1015(i2c)
 
-# Initiation des DELs
+# Initialisation des DELs
 rouge = LED(23)
 verte = LED(24)
 

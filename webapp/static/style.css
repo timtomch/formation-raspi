@@ -1,0 +1,22 @@
+body {
+    text-align: center;
+    font-family: sans-serif;
+    background-color: aquamarine;
+}
+
+img {
+    height: 200px;
+}
+
+.message {
+    font-size: 2em;
+}
+
+.donnees {
+    margin-top: 20px;
+}
+
+.maj {
+    font-size: 0.8em;
+    margin-top: 10px;
+}
