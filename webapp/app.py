@@ -9,7 +9,7 @@ def tail(file_path, n):
 
 def lire_donnees():
 	fichier = '/home/thomas/humidite.log'
-	donnees = tail(fichier,1000)
+	donnees = tail(fichier,100)
 	temps = []
 	humidite = []
 	statut = []
@@ -29,12 +29,15 @@ def index():
 	if statut_actuel == 'ok':
 		image = 'plante-heureuse.png'
 		message_statut = "Tout va bien!"
+		couleur = "#baffc9"
 	elif statut_actuel == 'sec':
 		image = 'plante-seche.png'
 		message_statut = "J'ai soif!"
+		couleur = "#ffdfba"
 	elif statut_actuel == 'humide':
 		image = 'plante-inondee.png'
 		message_statut = "Je me noie!"
+		couleur = "#bae1ff"
 	else:
 		image = ''
 		message_statut = "Données manquantes"
@@ -43,6 +46,7 @@ def index():
 		'humidite_actuelle': humidite[nombre_donnees-1],
 		'message': message_statut,
 		'image': image,
+		'couleur': couleur,
         'temps_valeurs': temps,
         'humidite_valeurs': humidite
 	}

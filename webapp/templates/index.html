@@ -1,17 +1,19 @@
 <!DOCTYPE html>
+<html lang="fr">
    <head>
       <title>Comment va ma plante verte?</title>
       <link rel="stylesheet" href='../static/style.css'/>
       <link rel="icon" type="image/png" href="../static/assets/{{ image }}">
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.min.js"></script>
       <meta http-equiv="refresh" content="30">
    </head>
-   <body>
+   <body style="background-color: {{ couleur }};">
       <img src="../static/assets/{{ image }}" />
       <div class="message">{{ message }}</div>
-      <div class="donnees">Humidité: {{ humidite_actuelle }}</div>
-      <canvas id="graphique" width="500px" height="200px"></canvas>
-      <script>
+      <div class="donnees">Humidité actuelle: {{ humidite_actuelle }}</div>
+      <canvas id="graphique" width="800px" height="300px"></canvas>
+      <script type="module">
+          import { Chart, registerables } from 'https://cdn.jsdelivr.net/npm/chart.js@4.4.8/+esm';
+          Chart.register(...registerables);
           var contexte = document.getElementById("graphique").getContext("2d");
           var graphique = new Chart(contexte,
           {
@@ -28,7 +30,12 @@
                   ]
               },
               options: {
-                  responsive: false
+                  responsive: true,
+                  scales: {
+                    y: {
+                        reverse: true,
+                        }
+                    }
               }
           });
       </script>
