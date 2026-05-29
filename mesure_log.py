@@ -2,8 +2,7 @@ from gpiozero import LED
 import time
 import board
 import busio
-import adafruit_ads1x15.ads1015 as ADS
-from adafruit_ads1x15.analog_in import AnalogIn
+from adafruit_ads1x15 import AnalogIn, ADS1015, ads1x15
 import logging
 import os
 
@@ -17,7 +16,7 @@ intervalle = 30
 i2c = busio.I2C(board.SCL, board.SDA)
 
 # Initialisation d'un objet ADC via le bus I2C
-ads = ADS.ADS1015(i2c)
+ads = ADS1015(i2c)
 
 # Initialisation des DELs
 rouge = LED(23)
@@ -25,7 +24,7 @@ verte = LED(24)
 
 
 # Mesure humidité sur canal 0
-senseur = AnalogIn(ads, ADS.P0)
+senseur = AnalogIn(ads, ads1x15.Pin.A0)
 
 # Valeurs limites
 trop_sec = 2.7
